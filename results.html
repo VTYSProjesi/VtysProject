@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazanan Takımlar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            overflow: hidden; /* Taşmaları önlemek için */
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #fff; /* Başlık rengi beyaz yapıldı */
+            position: relative; /* Bant için konumlandırma ayarlandı */
+            z-index: 1; /* Bant arka planda kalması için */
+        }
+        .banner {
+            background-color: #28a745; /* Yeşil bant */
+            padding: 10px 0; /* Üst ve alt boşluk */
+            position: relative; /* İçindeki elemanların konumlandırılmasını sağlamak için */
+            margin-bottom: 20px; /* Bant ile içerik arasındaki boşluk */
+        }
+        .team-list {
+            list-style-type: none; /* Madde işareti olmaması için */
+            padding: 0;
+            max-width: 600px; /* Maksimum genişlik ayarlandı */
+            margin: 0 auto; /* Ortalamak için */
+        }
+        .team-list li {
+            background: #fff; /* Beyaz arka plan */
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #ddd; /* Kenarlık */
+            border-radius: 5px; /* Kenarları yuvarlatma */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Gölgelendirme */
+            display: flex; /* Esnek kutu düzeni */
+            justify-content: space-between; /* İçerikleri iki kenara yay */
+        }
+        .back-button {
+            position: absolute; /* Sayfanın belirli bir noktasına konumlandırmak için */
+            right: 20px; /* Sağdan 20px boşluk */
+            bottom: 20px; /* Alttan 20px boşluk */
+            padding: 10px 20px; /* İç boşluk */
+            background-color: #007BFF; /* Buton rengi */
+            color: white; /* Yazı rengi beyaz */
+            text-decoration: none; /* Alt çizgi yok */
+            border: none; /* Kenarlık yok */
+            border-radius: 5px; /* Kenarları yuvarlatma */
+            cursor: pointer; /* İmleci işaretçi yap */
+            font-size: 16px; /* Yazı boyutu */
+        }
+        .back-button:hover {
+            background-color: #0056b3; /* Üzerine gelince daha koyu mavi */
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="header">
+            <h1>Kazanan Takımlar</h1>
+        </div>
+    </div>
+    <ul class="team-list">
+        {% for team in teams %}
+        <li>{{ team.name }} <span>Kazanma: {{ team.wins }}</span></li>
+        {% endfor %}
+    </ul>
+    <button class="back-button" onclick="window.location.href='{{ url_for('index') }}'">Geri Dön</button>
+</body>
+</html>
+
+
+

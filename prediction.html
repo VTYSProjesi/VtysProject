@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maç Tahmini</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Arka planın biraz şeffaf olması için */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+        body {
+            background-image: url('spor8.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #666;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .back-button {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            background-color: #f44336;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #d32f2f;
+        }
+        .prediction {
+            color: #555;
+            font-size: 18px;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Maç Tahmini</h1>
+        <form method="post">
+            <label for="team1">Takım 1</label>
+            <input type="text" name="team1" id="team1" required placeholder="Örn: Fenerbahçe">
+            
+            <label for="team2">Takım 2</label>
+            <input type="text" name="team2" id="team2" required placeholder="Örn: Galatasaray">
+            
+            <button type="submit">Tahmin Et</button>
+        </form>
+
+        {% if prediction %}
+        <h2 class="prediction">Tahmin: {{ prediction }}</h2>
+        {% endif %}
+
+        <a href="{{ url_for('index') }}" class="back-button">Geri Dön</a>
+    </div>
+</body>
+</html>
+
+
+
+
+

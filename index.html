@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spor Karşılaşmaları</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background: linear-gradient(to right, #FF5733, #FFC300, #28B463); /* Renkli gradyan bant */
+            color: white;
+            padding: 20px 0; /* Üst ve alt padding artırıldı */
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 5px; /* Kenarları yuvarlatma */
+        }
+        h1 {
+            margin: 0; /* Başlıkta üst ve alt marginleri kaldırdık */
+        }
+        .nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #0056b3; /* Takım adı sütunu için koyu mavi */
+            color: white;
+        }
+        .win {
+            background-color: #5cb85c; /* Kazanma sütunu için daha koyu yeşil */
+            color: white; /* Beyaz yazı rengi */
+        }
+        .loss {
+            background-color: #c9302c; /* Kaybetme sütunu için daha koyu kırmızı */
+            color: white; /* Beyaz yazı rengi */
+        }
+        /* Açık tonlar için */
+        .team-name-cell {
+            background-color: #eef5fb; /* Takım adı hücresi için daha açık mavi */
+        }
+        .win-cell {
+            background-color: #dff0d8; /* Kazanma hücresi için açık yeşil */
+        }
+        .loss-cell {
+            background-color: #f2dede; /* Kaybetme hücresi için açık kırmızı */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Spor Karşılaşmaları Analizi</h1>
+    </div>
+    <div class="nav">
+        <a href="{{ url_for('update') }}">Verileri Güncelle</a>
+        <a href="{{ url_for('results') }}">Kazanan Takımlar</a>
+        <a href="{{ url_for('predict') }}">Maç Tahmini</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th class="team-name">Karşılaşma ⚽</th> <!-- Futbol topu emojisi eklendi -->
+                <th class="win">Kazanan 🏆</th> <!-- Kupa emojisi eklendi -->
+                <th class="loss">Kaybeden 😞</th> <!-- Üzgün yüz emojisi eklendi -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in teams %}
+            <tr>
+                <td class="team-name-cell">{{ team.name }}</td> <!-- Açık mavi arka plan -->
+                <td class="win-cell">{{ team.wins }}</td>      <!-- Daha koyu yeşil arka plan -->
+                <td class="loss-cell">{{ team.losses }}</td>  <!-- Daha koyu kırmızı arka plan -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
